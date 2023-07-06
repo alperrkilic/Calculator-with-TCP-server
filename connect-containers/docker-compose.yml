@@ -1,16 +1,20 @@
-version: '2'
-
+version: '3'
 services:
   tcp_server:
-    image: calculator-server
-    ports: [ 5000 ]
-
+    build:
+      context: .
+      dockerfile: tcp_server
+    ports:
+      - 5000:5000
+    command: python /app/tcp_server.py
+    image: tcp_server
   receive_message:
     build:
       context: .
-      args:
-        - DATA_TO_SEND
-    image: calculator-receiver
+      dockerfile: receive_message
     environment:
-      - DATA_TO_SEND
-    command: python /app/receive_message.py $DATA_TO_SEND
+      - DATA_TO_SEND=26+32
+    command: python /app/receive_message.py
+    image: receive_message
+    depends_on:
+      - tcp_server
