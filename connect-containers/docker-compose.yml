@@ -1,0 +1,10 @@
+version: '2'
+
+services:
+
+  tcp_server:
+    image: calculator-server
+    ports: [ 5000 ]
+
+  receive_message:
+    image: calculator-receive
