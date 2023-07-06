@@ -1,10 +1,16 @@
 version: '2'
 
 services:
-
   tcp_server:
     image: calculator-server
     ports: [ 5000 ]
 
   receive_message:
-    image: calculator-receive
+    build:
+      context: .
+      args:
+        - DATA_TO_SEND
+    image: calculator-receiver
+    environment:
+      - DATA_TO_SEND
+    command: python /app/receive_message.py $DATA_TO_SEND

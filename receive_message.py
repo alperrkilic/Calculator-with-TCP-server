@@ -1,5 +1,6 @@
 import socket
 import json
+import os
 
 HOST = 'localhost'
 PORT = 5000
@@ -19,20 +20,20 @@ def send_data(data):
 
 
 def menu():
-    choice = ""
+    # choice = ""
 
-    while choice != 'N' or choice != 'n':
-        data_to_send = input("Please enter the operation to calculate: ")
-        response = send_data(data_to_send)
+    # while choice != 'N' or choice != 'n':
+    data_to_send = os.getenv("DATA_TO_SEND")
+    response = send_data(data_to_send)
 
-        if response:
-            if response["error"] != "True":
-                print("Result is: ", response["data"])
-                print(response)
-            elif response["error"] == "True":
-                print("Wrong input, please try again.")
+    if response:
+        if response["error"] != "True":
+            print("Result is: ", response["data"])
+            # print(response)
+        elif response["error"] == "True":
+            print("Wrong input, please try again.")
 
-        choice = input("Do you want to continue (Y/N) ?: ")
+    # choice = input("Do you want to continue (Y/N) ?: ")
 
 
 menu()
