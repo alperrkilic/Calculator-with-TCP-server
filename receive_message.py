@@ -26,9 +26,11 @@ def menu():
     # choice = ""
 
     # while choice != 'N' or choice != 'n':
-    data_to_send = os.getenv("DATA_TO_SEND")
+    # default environment variable = 26+32
+    data_to_send = str(os.getenv('DATA_TO_SEND', '26+32'))
+    print(data_to_send)
     print("WORKING")
-    response = send_data("76+22")
+    response = send_data(data_to_send)
 
     if response:
         if response["error"] != "True":

@@ -12,8 +12,6 @@ services:
     build:
       context: .
       dockerfile: receive_message
-    environment:
-      - DATA_TO_SEND=26+32
     command: python /app/receive_message.py
     image: receive_message
     depends_on:
