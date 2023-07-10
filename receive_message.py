@@ -2,7 +2,7 @@ import socket
 import json
 import os
 
-HOST = 'localhost'
+HOST = '10.0.2.4'
 PORT = 5000
 
 

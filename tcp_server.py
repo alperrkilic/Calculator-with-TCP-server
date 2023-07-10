@@ -1,7 +1,7 @@
 import socket
 import json
 
-HOST = 'localhost'  # hostname or IP address
+HOST = '0.0.0.0'  # hostname or IP address
 PORT = 5000  # specifying the PORT
 
 
